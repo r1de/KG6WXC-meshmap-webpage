@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MeshMap Node Report</title>
+	<script src="js/jquery-3.7.1.js"></script>
+	<script src="js/datatables.min.js"></script>
+	<link rel="stylesheet" href="css/datatables.css">
+</head>
+<!-- <body class='wide comments meshdata'> -->
+<body>
+	<a name='top' id='top'></a>
+	<h1 class='page_title' style='display: inline;'>MeshMap Nodes</h1>
+	<a href='../' style='float: right;'>View on Map</a>
+	<table id="meshdata" class="display" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Lat</th>
+				<th>Lon</th>
+				<th>SSID</th>
+				<th>Model</th>
+				<th>Version</th>
+				<th>Last Seen</th>
+			</tr>
+		</thead>
+
+		<tfoot>
+			<tr>
+				<th>Name</th>
+				<th>Lat</th>
+				<th>Lon</th>
+				<th>SSID</th>
+				<th>Model</th>
+				<th>Version</th>
+				<th>Last Seen</th>
+			</tr>
+		</tfoot>
+	</table>
+	<script>
+	new DataTable('#meshdata', {
+		ajax: '../data/node_report_data.json',
+		"scrollX": true,
+		"pageLength": 25,
+		"columnDefs": [{
+			"visible": true,
+			"targets": -1,
+		}],
+		"columns": [
+			{data: 'node'},
+			{data: 'lat'},
+			{data: 'lon'},
+			{data: 'ssid'},
+			{data: 'model'},
+			{data: 'firmware_version'},
+			{data: 'last_seen'}
+		],
+		processing: true,
+		serverside: true
+	});
+	</script>
+</html>

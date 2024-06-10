@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+	<circle cx="12" cy="12" r="0" fill="currentColor">
+		<animate attributeName="r" calcMode="spline" dur="1.2s" keySplines=".52,.6,.25,.99" repeatCount="indefinite" values="0;11"/>
+		<animate attributeName="opacity" calcMode="spline" dur="1.2s" keySplines=".52,.6,.25,.99" repeatCount="indefinite" values="1;0"/>
+	</circle>
+	<image id="localNodeIcon" href="" x="6" y="6" height="12" width="12" />
+</svg>
