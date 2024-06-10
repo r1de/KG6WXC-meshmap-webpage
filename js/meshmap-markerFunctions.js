@@ -109,10 +109,17 @@ function createDeviceMarkers(allDevices) {
 			"<ul class='popupTabs-link'><li class='popupTab-link'><a href='#popupTab-Main'><span>Main</span></a></li><li class='popupTab-link'>" +
 			"<a href='#popupTab-Services'><span>Services</span></a></li><li class='popupTab-link''><a href='#popupTab-Links'><span>Links</span></a></li></ul>" +
 			"</div>";
-		oms.addMarker(L.marker([allDevices['3ghz'][i].lat, allDevices['3ghz'][i].lon], {
-			icon: threeRadioCircle,
-			title: allDevices['3ghz'][i].node
-		}).bindPopup(popup, {maxwidth: 500}).addTo(threeGHzStations));
+		if(mapInfo['localnode'] == allDevices[band][i].node) {
+			oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
+				icon: pulse5,
+				title: allDevices[band][i].node
+			}).bindPopup(popup, {maxwidth: 500}).addTo(threeGHzStations));
+		}else {
+			oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
+				icon: fiveRadioCircle,
+				title: allDevices[band][i].node
+			}).bindPopup(popup, {maxwidth: 500}).addTo(threeGHzStations));
+		}
 		createLinks(allDevices[band][i].node, allDevices[band][i].link_info, allDevices[band][i].lat, allDevices[band][i].lon, threeLinksTX, "txRate");
 		createLinks(allDevices[band][i].node, allDevices[band][i].link_info, allDevices[band][i].lat, allDevices[band][i].lon, threeLinksThp, "Tput");
 		createLinks(allDevices[band][i].node, allDevices[band][i].link_info, allDevices[band][i].lat, allDevices[band][i].lon, threeLinksSnR, "SnR");
@@ -136,14 +143,14 @@ function createDeviceMarkers(allDevices) {
 			"<a href='#popupTab-Services'><span>Services</span></a></li><li class='popupTab-link''><a href='#popupTab-Links'><span>Links</span></a></li></ul>" +
 			"</div>";
 		if(mapInfo['localnode'] == allDevices[band][i].node) {
-			oms.addMarker(L.marker([allDevices['5ghz'][i].lat, allDevices['5ghz'][i].lon], {
+			oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
 				icon: pulse5,
-				title: allDevices['5ghz'][i].node
+				title: allDevices[band][i].node
 			}).bindPopup(popup, {maxwidth: 500}).addTo(fiveGHzStations));
 		}else {
-			oms.addMarker(L.marker([allDevices['5ghz'][i].lat, allDevices['5ghz'][i].lon], {
+			oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
 				icon: fiveRadioCircle,
-				title: allDevices['5ghz'][i].node
+				title: allDevices[band][i].node
 			}).bindPopup(popup, {maxwidth: 500}).addTo(fiveGHzStations));
 		}
 		createLinks(allDevices[band][i].node, allDevices[band][i].link_info, allDevices[band][i].lat, allDevices[band][i].lon, fiveLinksTX, "txRate");
