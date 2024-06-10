@@ -196,11 +196,11 @@ var numMaps = 0;
 for(var [k, v] of Object.entries(mapInfo['mapTileServers'])) {
 //	console.log("K: " + k + " V: " + v); 
 	if(k.includes("-default")) {
-		defaultMap = new L.tileLayer(v);
+		defaultMap = new L.tileLayer(v, { className: 'map-tiles' });
 		defaultMapName = k.replace("-default", "");
 		baseLayers[defaultMapName] = defaultMap;
 	}else {
-		var mapNum= new L.tileLayer(v);
+		var mapNum= new L.tileLayer(v, { className: 'map-tiles' });
 		baseLayers[k] = mapNum;
 	}
 	numMaps++;
