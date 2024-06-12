@@ -49,6 +49,7 @@ function createDeviceMarkers(allDevices) {
 			"<br>" + allDevices[band][i].lat + ", " + allDevices[band][i].lon + "<br>" + allDevices[band][i].ssid +
 			"<br>Channel: " + allDevices[band][i].channel + ", Bandwidth: " + allDevices[band][i].chanbw +
 			"<br>" + allDevices[band][i].model + "<br>Firmware: " + allDevices[band][i].firmware_version +
+			"<br>Antenna: " + allDevices[band][i].antDesc + " Gain: " + allDevices[band][i].antGain + " Beam: " + allDevices[band][i].antBeam + "&deg;" +
 			"<br>Last Polled: " + localTime.toLocaleString() + "<br>Uptime: " + allDevices[band][i].uptime +
 			"<br>Load Avg: 1min " + allDevices[band][i].loadavg[0] + ", 5min " + allDevices[band][i].loadavg[1] + ", 15min " + allDevices[band][i].loadavg[2] +
 			"<br>" + allDevices[band][i].hopsAway + " hops away from map polling system</div></div>" +
@@ -82,6 +83,7 @@ function createDeviceMarkers(allDevices) {
 			"<br>" + allDevices[band][i].lat + ", " + allDevices[band][i].lon + "<br>" + allDevices[band][i].ssid +
 			"<br>Channel: " + allDevices[band][i].channel + ", Bandwidth: " + allDevices[band][i].chanbw +
 			"<br>" + allDevices[band][i].model + "<br>Firmware: " + allDevices[band][i].firmware_version +
+			"<br>Antenna: " + allDevices[band][i].antDesc + " Gain: " + allDevices[band][i].antGain + " Beam: " + allDevices[band][i].antBeam + "&deg;" +
 			"<br>Last Polled: " + localTime.toLocaleString() + "<br>Uptime: " + allDevices[band][i].uptime +
 			"<br>Load Avg: 1min " + allDevices[band][i].loadavg[0] + ", 5min " + allDevices[band][i].loadavg[1] + ", 15min " + allDevices[band][i].loadavg[2] +
 			"<br>" + allDevices[band][i].hopsAway + " hops away from map polling system</div></div>" +
@@ -115,6 +117,7 @@ function createDeviceMarkers(allDevices) {
 			"<br>" + allDevices[band][i].lat + ", " + allDevices[band][i].lon + "<br>" + allDevices[band][i].ssid +
 			"<br>Channel: " + allDevices[band][i].channel + ", Bandwidth: " + allDevices[band][i].chanbw +
 			"<br>" + allDevices[band][i].model + "<br>Firmware: " + allDevices[band][i].firmware_version +
+			"<br>Antenna: " + allDevices[band][i].antDesc + " Gain: " + allDevices[band][i].antGain + " Beam: " + allDevices[band][i].antBeam + "&deg;" +
 			"<br>Last Polled: " + localTime.toLocaleString() + "<br>Uptime: " + allDevices[band][i].uptime +
 			"<br>Load Avg: 1min " + allDevices[band][i].loadavg[0] + ", 5min " + allDevices[band][i].loadavg[1] + ", 15min " + allDevices[band][i].loadavg[2] +
 			"<br>" + allDevices[band][i].hopsAway + " hops away from map polling system</div></div>" +
@@ -148,6 +151,7 @@ function createDeviceMarkers(allDevices) {
 			"<br>" + allDevices[band][i].lat + ", " + allDevices[band][i].lon + "<br><strong>SSID</strong>: " + allDevices[band][i].ssid +
 			"<br><strong>Channel</strong>: " + allDevices[band][i].channel + ", Bandwidth: " + allDevices[band][i].chanbw +
 			"<br>" + allDevices[band][i].model + "<br>Firmware: " + allDevices[band][i].firmware_version +
+			"<br>Antenna: " + allDevices[band][i].antDesc + " Gain: " + allDevices[band][i].antGain + " Beam: " + allDevices[band][i].antBeam + "&deg;" +
 			"<br>Last Polled: " + localTime.toLocaleString() + "<br>Uptime: " + allDevices[band][i].uptime +
 			"<br>Load Avg: 1min " + allDevices[band][i].loadavg[0] + ", 5min " + allDevices[band][i].loadavg[1] + ", 15min " + allDevices[band][i].loadavg[2] +
 			"<br>" + allDevices[band][i].hopsAway + " hops away from map polling system</div></div>" +
@@ -181,6 +185,7 @@ function createDeviceMarkers(allDevices) {
 			"<br>" + allDevices[band][i].lat + ", " + allDevices[band][i].lon + "<br>" + allDevices[band][i].ssid +
 			"<br>Channel: " + allDevices[band][i].channel + ", Bandwidth: " + allDevices[band][i].chanbw +
 			"<br>" + allDevices[band][i].model + "<br>Firmware: " + allDevices[band][i].firmware_version +
+			"<br>Antenna: " + allDevices[band][i].antDesc + " Gain: " + allDevices[band][i].antGain + " Beam: " + allDevices[band][i].antBeam + "&deg;" +
 			"<br>Last Polled: " + localTime.toLocaleString() + "<br>Uptime: " + allDevices[band][i].uptime +
 			"<br>Load Avg: 1min " + allDevices[band][i].loadavg[0] + ", 5min " + allDevices[band][i].loadavg[1] + ", 15min " + allDevices[band][i].loadavg[2] +
 			"<br>" + allDevices[band][i].hopsAway + " hops away from map polling system</div></div>" +
