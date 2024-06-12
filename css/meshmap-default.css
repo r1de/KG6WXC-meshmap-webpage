@@ -10,11 +10,48 @@ body {
 /* Dark Mode */
 :root {
     --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+    --attrib-filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+    --legend-filter: brightness(0.7) invert(0) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 }
 
-@media (prefers-color-scheme: dark) {
+[data-theme="dark"] {
     .map-tiles {
         filter:var(--map-tiles-filter, none);
+	}
+    .leaflet-control-attribution {
+        filter:var(--attrib-filter, none);
+	}
+    .leaflet-bar {
+	filter:var(--map-tiles-filter, none);
+	}
+    .leaflet-control-layers {
+	filter:var(--map-tiles-filter, none);
+	}
+    .leaflet-control-search {
+	filter:var(--map-tiles-filter, none);
+	}
+    .leaflet-control-scale {
+	filter:var(--map-tiles-filter, none);
+	}
+}
+[data-theme="light"] {
+    .map-tiles {
+        filter: none;
+	}
+    .leaflet-control-attribution {
+        filter: none;
+	}
+    .leaflet-bar {
+	filter: none;
+	}
+    .leaflet-control-layers {
+	filter: none;
+	}
+    .leaflet-control-search {
+	filter: none;
+	}
+    .leaflet-control-scale {
+	filter: none;
 	}
 }
 

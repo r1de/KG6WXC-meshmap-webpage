@@ -34,6 +34,8 @@ legend.onAdd = function (map) {
 		'<img class="legendBandIcon" src="images/mapMarkers/goldRadioCircle-icon.png">5GHz' +
 		'</div>' +
 		'<div id="legendHide"><button id="legendLinkButton" onclick="hideLegend()">Hide</button></div>' +
+		'<div id="darkModeToggle"><input id="darkModeCheckBox" type="checkbox" name="darkMode" data-theme-toggle />' +
+		'<label for="darkModeCheckBox">Dark</label></div>' +
 		'</div>';
 	return div;
 };
@@ -47,5 +49,15 @@ function hideLegend() {
 	}else {
 		lgd[0].style.display = "block";
 		lgdHidden[0].style.display = "none";
+	}
+}
+
+function toggleDarkMode() {
+	if(window.matchMedia(darkModeText).matches) {
+		window.setMedia(lightModeText);
+		document.getElementById("darkModeCheckBox").checked = false;
+	}else {
+		window.setMedia(darkModeText);
+		document.getElementById("darkModeCheckBox").checked = true;
 	}
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" data-theme="light">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="refresh" content="600">
@@ -55,7 +55,8 @@
 //Update page Title
 document.title = mapInfo.title;
 
-//Map Base Layers (the map tiles)
+var darkModeText = "(prefers-color-scheme: dark)";
+var mapOriginMarker;
 
 //Icons
 //900
@@ -69,6 +70,9 @@ var pulse9 = L.icon({
     shadowUrl: 'images/mapMarkers/pulse.svg',
     shadowAnchor: [18,18]
 });
+//if(window.matchMedia(darkModeText).matches) {
+//	pulse9['options']['shadowUrl'] = 'images/mapMarkers/pulse-invert.svg';
+//}
 
 //2GHz
 var twoRadioCircle = L.icon({
@@ -81,6 +85,9 @@ var pulse2 = L.icon({
     shadowUrl: 'images/mapMarkers/pulse.svg',
     shadowAnchor: [18,18]
 });
+//if(window.matchMedia(darkModeText).matches) {
+//	pulse2['options']['shadowUrl'] = 'images/mapMarkers/pulse-invert.svg';
+//}
 
 //3GHz
 var threeRadioCircle = L.icon({
@@ -93,6 +100,9 @@ var pulse3 = L.icon({
     shadowUrl: 'images/mapMarkers/pulse.svg',
     shadowAnchor: [18,18]
 });
+//if(window.matchMedia(darkModeText).matches) {
+//	pulse3['options']['shadowUrl'] = 'images/mapMarkers/pulse-invert.svg';
+//}
 
 //5GHz
 var fiveRadioCircle = L.icon({
@@ -105,6 +115,11 @@ var pulse5 = L.icon({
     shadowUrl: 'images/mapMarkers/pulse.svg',
     shadowAnchor: [18,18]
 });
+/*
+if(window.matchMedia(darkModeText).matches) {
+	pulse5['options']['shadowUrl'] = 'images/mapMarkers/pulse-invert.svg';
+}
+*/
 
 //mesh RF off
 var noRFCircle = L.icon({
@@ -117,6 +132,9 @@ var pulseNon = L.icon({
     shadowUrl: 'images/mapMarkers/pulse.svg',
     shadowAnchor: [18,18]
 });
+//if(window.matchMedia(darkModeText).matches) {
+//	pulseNon['options']['shadowUrl'] = 'images/mapMarkers/pulse-invert.svg';
+//}
 
 //Layer Groups
 var nineHundredMHzStations = new L.LayerGroup();
@@ -225,6 +243,14 @@ var hash = new L.Hash(map);
 //Legend
 legend.addTo(map);
 legendHidden.addTo(map);
+
+/*
+if(window.matchMedia(darkModeText).matches) {
+	document.getElementById("legendMapOrigin").firstChild.src = "images/mapMarkers/pulse-invert.svg";
+	document.getElementById("darkModeCheckBox").checked = true;
+}
+*/
+
 
 //Create additional Control placeholders
 function addControlPlaceholders(map) {
@@ -483,6 +509,37 @@ map.on('overlayadd', function(e) {
 		band3.addLayer(threeLinksQual);
 		band5.addLayer(fiveLinksQual);
 		document.getElementById("legendGradientRectangle").innerHTML = "<0.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Link Quality&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1";
+	}
+});
+function themeString({ localStorageTheme, systemSettingDark }) {
+	if(localStorageTheme !== null) {
+		return localStorageTheme;
+	}
+	if(systemSettingDark.matches) {
+		return "dark";
+	}
+	return "light";
+}
+var localStorageTheme = localStorage.getItem("theme");
+var systemSettingDark = window.matchMedia(darkModeText);
+var currentThemeSetting = themeString({ localStorageTheme, systemSettingDark });
+
+var darkModeCheckBox = document.querySelector("input[data-theme-toggle]");
+darkModeCheckBox.addEventListener("change", function() {
+	if(darkModeCheckBox.checked) {
+		console.log("checked");
+		var newTheme = "dark";
+		localStorage.setItem("theme", newTheme);
+		document.querySelector("html").setAttribute("data-theme", newTheme);
+		document.getElementById("legendMapOrigin").firstChild.src = "images/mapMarkers/pulse-invert.svg";
+		document.getElementsByClassName("leaflet-marker-shadow")[0]['src'] = "images/mapMarkers/pulse-invert.svg";
+	}else {
+		console.log("not checked");
+		var newTheme = "light";
+		localStorage.setItem("theme", newTheme);
+		document.querySelector("html").setAttribute("data-theme", newTheme);
+		document.getElementById("legendMapOrigin").firstChild.src = "images/mapMarkers/pulse.svg";
+		document.getElementsByClassName("leaflet-marker-shadow")[0]['src'] = "images/mapMarkers/pulse.svg";
 	}
 });
 </script>

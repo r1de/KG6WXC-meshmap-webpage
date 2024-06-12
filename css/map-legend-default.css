@@ -97,6 +97,23 @@
 	color: white;
 	display: flex;
 }
+
+#darkModeToggle {
+	/*#808080*/
+	position: absolute;
+	top: 86px;
+/*	right: 2px; */
+/*	background: #808080; */
+	border-radius: 5px;
+/*	text-align: center; */
+	align-items: center;
+	height: 20px;
+/*	width: 75px; */
+	right: 1px;
+	color: white;
+	display: flex;
+}
+
 #legendInfinite {
 	position: absolute;
 	top: 82px;

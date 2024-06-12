@@ -59,8 +59,8 @@ function createDeviceMarkers(allDevices) {
 			"</div>";
 		if(mapInfo['localnode'] == allDevices[band][i].node) {
 			oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
-				icon: pulse9,
-				title: allDevices[band][i].node
+						icon: pulse9,
+						title: allDevices[band][i].node
 			}).bindPopup(popup, {maxwidth: 500}).addTo(nineHundredMHzStations));
 		}else {
 			oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
