@@ -524,6 +524,21 @@ var localStorageTheme = localStorage.getItem("theme");
 var systemSettingDark = window.matchMedia(darkModeText);
 var currentThemeSetting = themeString({ localStorageTheme, systemSettingDark });
 
+if(currentThemeSetting == "dark") {
+        localStorage.setItem("theme", currentThemeSetting);
+        document.querySelector("html").setAttribute("data-theme", currentThemeSetting);
+        document.getElementById("legendMapOrigin").firstChild.src = "images/mapMarkers/pulse-invert.svg";
+        document.getElementsByClassName("leaflet-marker-shadow")[0]['src'] = "images/mapMarkers/pulse-invert.svg";
+        document.getElementById("darkModeCheckBox").checked = true;
+}else {
+        localStorage.setItem("theme", currentThemeSetting);
+        document.querySelector("html").setAttribute("data-theme", currentThemeSetting);
+        document.getElementById("legendMapOrigin").firstChild.src = "images/mapMarkers/pulse.svg";
+        document.getElementsByClassName("leaflet-marker-shadow")[0]['src'] = "images/mapMarkers/pulse.svg";
+        document.getElementById("darkModeCheckBox").checked = false;
+
+}
+
 var darkModeCheckBox = document.querySelector("input[data-theme-toggle]");
 darkModeCheckBox.addEventListener("change", function() {
 	if(darkModeCheckBox.checked) {
