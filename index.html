@@ -229,8 +229,8 @@ for(var [k, v] of Object.entries(mapInfo['mapTileServers'])) {
 
 
 var map = L.map('map', {
-	center: [34.0231, -118.5439],
-	zoom: 10,
+	center: mapInfo['mapCenterCoords'],
+	zoom: mapInfo['mapInitialZoom'],
 	minZoom: 0,
 	maxZoom: 18,
 	layers: [defaultMap, band2, band3, band5, band900]
