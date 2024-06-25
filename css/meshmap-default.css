@@ -55,6 +55,10 @@ body {
     .leaflet-control-scale {
 	filter:var(--map-tiles-filter, none);
 	}
+    .popupTabs {
+	filter:var(--overlay-filter-invert);
+	background-color: rgba(0,0,0,0);
+	}
 }
 [data-theme="light"] {
     .map-tiles {
