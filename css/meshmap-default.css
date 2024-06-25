@@ -12,6 +12,8 @@ body {
     --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
     --attrib-filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
     --legend-filter: brightness(0.7) invert(0) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+    --overlay-filter: invert(0);
+    --overlay-filter-invert: invert(1);
 }
 
 [data-theme="dark"] {
@@ -21,11 +23,26 @@ body {
     .leaflet-control-attribution {
         filter:var(--attrib-filter, none);
 	}
-    .leaflet-bar {
+    .leaflet-bar.leaflet-control-zoom {
+	filter:var(--map-tiles-filter, none);
+	}
+    .leaflet-bar.leaflet-ruler {
+	filter:var(--map-tiles-filter, none);
+	}
+    .leaflet-control-custom.leaflet-bar {
 	filter:var(--map-tiles-filter, none);
 	}
     .leaflet-control-layers {
 	filter:var(--map-tiles-filter, none);
+	}
+    .leaflet-control-layers-expanded {
+	filter:var(--overlay-filter, none);
+	background-color: rgba(0,0,0,0.5);
+	color: white;
+	}
+    #leaflet-control-layers-group-2 {
+	filter:var(--overlay-filter-invert, none);
+	color: black;
 	}
     .leaflet-control-search {
 	filter:var(--map-tiles-filter, none);
