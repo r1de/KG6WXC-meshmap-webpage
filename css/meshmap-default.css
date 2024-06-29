@@ -9,11 +9,8 @@ body {
 
 /* Dark Mode */
 :root {
-/*    --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7); */
     --map-tiles-filter: brightness(0.6) contrast(3) saturate(0.3) invert(1) hue-rotate(200deg);
-/*    --attrib-filter: brightness(0.7) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7); */
     --attrib-filter: brightness(0.7) contrast(2) invert(1) hue-rotate(200deg);
-/*    --legend-filter: brightness(0.7) invert(0) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7); */
     --legend-filter: brightness(0.7) contrast(2) invert(0) hue-rotate(200deg);
     --overlay-filter: brightness(0.7) contrast(2) invert(0);
     --overlay-filter-invert: brightness(0.7) contrast(2) invert(1);
@@ -58,6 +55,9 @@ body {
     .popupTabs {
 	filter:var(--attrib-filter);
 	background-color: rgba(0,0,0,0);
+	}
+    .linkPopupContent {
+	filter:var(--attrib-filter);
 	}
 }
 [data-theme="light"] {
@@ -291,7 +291,7 @@ MAP_DETAILS {
 /** New stuff for the popup tabs **/
 .leaflet-popup-content{
 	width: 350px;
-	margin: 13px 13px;
+	margin: 3px 3px;
 }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
 	background: #0000009c !important;
@@ -302,7 +302,7 @@ MAP_DETAILS {
 	position: relative;
 	min-height: 250px;
 	clear: both;
-	margin: 18px 0;
+	margin: 3px 0;
 }
 .popupTab {
 	float: left;
