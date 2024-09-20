@@ -48,6 +48,8 @@
 	<script src="js/meshmap-markerFunctions.js"></script>
 	<script src="js/meshmap-linkFunctions.js"></script>
 
+	<script src="js/meshmap-userLocation.js"></script>
+
 </head>
 <body>
 <div id="map"><div id='spiderfyActive'>SPIDERFY ACTIVE</div></div>
@@ -57,6 +59,8 @@ document.title = mapInfo.title;
 
 var darkModeText = "(prefers-color-scheme: dark)";
 var mapOriginMarker;
+
+getLocation();
 
 //Icons
 //900
@@ -132,6 +136,13 @@ var pulseNon = L.icon({
     shadowUrl: 'images/mapMarkers/pulse.svg',
     shadowAnchor: [18,18]
 });
+
+//You Are Here
+var userLocationIcon = L.icon({
+	iconUrl: 'images/you_are_here.png',
+	iconSize: [24, 24], iconAnchor: [9, 9]
+});
+
 //if(window.matchMedia(darkModeText).matches) {
 //	pulseNon['options']['shadowUrl'] = 'images/mapMarkers/pulse-invert.svg';
 //}
@@ -212,14 +223,28 @@ var mapNum = "map0";
 var numMaps = 0;
 
 for(var [k, v] of Object.entries(mapInfo['mapTileServers'])) {
-//	console.log("K: " + k + " V: " + v); 
-	if(k.includes("-default")) {
+
+//if there is a map tile server entry that has ".local.mesh" in it's URL, AND,
+//the URL of the server of this page has ".local.mesh" in it, then use the mesh tile server.
+//if not, just use the other map tile server entries. 
+
+	if(v.includes(".local.mesh") && window.location.hostname.includes(".local.mesh")) {
 		defaultMap = new L.tileLayer(v, { className: 'map-tiles' });
-		defaultMapName = k.replace("-default", "");
+		if(k.includes("-default")) {
+			defaultMapName = k.replace("-default", "");
+		}else {
+			defaultMapName = k;
+		}
 		baseLayers[defaultMapName] = defaultMap;
 	}else {
-		var mapNum= new L.tileLayer(v, { className: 'map-tiles' });
-		baseLayers[k] = mapNum;
+		if(k.includes("-default")) {
+			defaultMap = new L.tileLayer(v, { className: 'map-tiles' });
+			defaultMapName = k.replace("-default", "");
+			baseLayers[defaultMapName] = defaultMap;
+		}else {
+			var mapNum= new L.tileLayer(v, { className: 'map-tiles' });
+			baseLayers[k] = mapNum;
+		}
 	}
 	numMaps++;
 	mapNum = "map" + numMaps;
