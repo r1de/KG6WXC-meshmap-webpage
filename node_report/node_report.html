@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>MeshMap Node Report</title>
 	<script src="js/jquery-3.7.1.js"></script>
-	<script src="js/datatables.min.js"></script>
 	<link rel="stylesheet" href="css/datatables.css">
+	<link rel="stylesheet" href="css/buttons.dataTables.css">
+
+	<!-- these 2 are required for the CSV export ("buttons.html5.js") to work -->
+	<script src="js/jszip.js"></script>
+	<script src="js/psfmake.js"></script>
+
+	<script src="js/datatables.min.js"></script>
+	<script src="js/dataTables.buttons.js"></script>
+	<script src="js/buttons.html5.js"></script>
 </head>
 <!-- <body class='wide comments meshdata'> -->
 <body>
@@ -55,7 +64,12 @@
 			{data: 'last_seen'}
 		],
 		processing: true,
-		serverside: true
+		serverside: true,
+		layout: {
+			topStart: {
+				buttons: [ 'excel' ]
+			}
+		}
 	});
 	</script>
 </html>
