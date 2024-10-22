@@ -158,14 +158,21 @@ function linkColorRF_quality(value) {
 				linkColor = "#A020F0";
 //				L.polyline([[parseFloat(nodeLat), parseFloat(nodeLon)],[parseFloat(objArray[i][1].linkLat), parseFloat(objArray[i][1].linkLon)]],
 //					{color: linkColor, opacity: 0.2, weight: 2, offset: 2}).addTo(layer);
-				L.polyline([[parseFloat(nodeLat), parseFloat(nodeLon)],[parseFloat(objArray[i][1].linkLat), parseFloat(objArray[i][1].linkLon)]],
-					{color: linkColor, opacity: 0.2, weight: 2, offset: 2}).bindPopup(
-                                                "<div class='linkPopupContent'><strong>" + objArray[i][1].hostname + "</strong> to <strong>" + node +
-                                                "</div>").addTo(noRFLinks);
+				if(linkMetric === "supernode") {
+					L.polyline([[parseFloat(nodeLat), parseFloat(nodeLon)],[parseFloat(objArray[i][1].linkLat), parseFloat(objArray[i][1].linkLon)]],
+										{color: linkColor, opacity: 0.5, weight: 2, offset: 2}).bindPopup(
+					                                                "<div class='linkPopupContent'><strong>" + objArray[i][1].hostname + "</strong> to <strong>" + node +
+					                                                " DTD</div>").addTo(superNodeLinks);
+				}else {
+					L.polyline([[parseFloat(nodeLat), parseFloat(nodeLon)],[parseFloat(objArray[i][1].linkLat), parseFloat(objArray[i][1].linkLon)]],
+										{color: linkColor, opacity: 0.5, weight: 2, offset: 2}).bindPopup(
+					                                                "<div class='linkPopupContent'><strong>" + objArray[i][1].hostname + "</strong> to <strong>" + node +
+					                                                " DTD</div>").addTo(noRFLinks);
+				}
 			}
 		}
 		if(objArray[i][1].linkType === "TUN" || objArray[i][1].linkType === "WIREGUARD") {
-//			linkColor = "grey";
+			linkColor = "steelblue";
 			if(typeof objArray[i][1].linkLat === 'undefined' ||
 				objArray[i][1].linkLat === null ||
 				nodeLat === 'undefined' ||
@@ -175,10 +182,17 @@ function linkColorRF_quality(value) {
 			}else {
 //				L.polyline([[parseFloat(nodeLat), parseFloat(nodeLon)],[parseFloat(objArray[i][1].linkLat), parseFloat(objArray[i][1].linkLon)]],
 //					{color: linkColor, opacity: 0.2, weight: 2, offset: 2}).addTo(layer);
-				L.polyline([[parseFloat(nodeLat), parseFloat(nodeLon)],[parseFloat(objArray[i][1].linkLat), parseFloat(objArray[i][1].linkLon)]],
-					{color: linkColor, opacity: 0.2, weight: 2, offset: 2}).bindPopup(
-                                                "<div class='linkPopupContent'><strong>" + objArray[i][1].hostname + "</strong> to <strong>" + node +
-                                                "</div>").addTo(noRFLinks);
+				if(linkMetric === "supernode") {
+					L.polyline([[parseFloat(nodeLat), parseFloat(nodeLon)],[parseFloat(objArray[i][1].linkLat), parseFloat(objArray[i][1].linkLon)]],
+										{color: linkColor, opacity: 0.5, weight: 2, offset: 2}).bindPopup(
+					                                                "<div class='linkPopupContent'><strong>" + objArray[i][1].hostname + "</strong> to <strong>" + node +
+					                                                " TUN</div>").addTo(superNodeLinks);
+				}else {
+					L.polyline([[parseFloat(nodeLat), parseFloat(nodeLon)],[parseFloat(objArray[i][1].linkLat), parseFloat(objArray[i][1].linkLon)]],
+										{color: linkColor, opacity: 0.5, weight: 2, offset: 2}).bindPopup(
+					                                                "<div class='linkPopupContent'><strong>" + objArray[i][1].hostname + "</strong> to <strong>" + node +
+					                                                " TUN</div>").addTo(noRFLinks);
+				}
 			}
 		}
 		if(!'linkType' in objArray[i][1]) {

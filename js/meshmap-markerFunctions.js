@@ -207,4 +207,34 @@ function createDeviceMarkers(allDevices) {
 		}
 		createLinks(allDevices[band][i].node, allDevices[band][i].link_info, allDevices[band][i].lat, allDevices[band][i].lon, noRFLinks);
 	}
+	for(var i = 0; i < allDevices['supernode'].length; i++) {
+			var band = "supernode";
+			var localTime = new Date(allDevices[band][i].last_seen + " UTC");
+			var popup = "<div class='popupTabs'><div class='popupTab' id='popupMain'><div class='popupTabContent'><NodeTitle><a href='http://" +
+				allDevices[band][i].node + ".local.mesh' target='node'>" + allDevices[band][i].node + "</a></NodeTitle>" +
+				"<br>" + allDevices[band][i].lat + ", " + allDevices[band][i].lon + "<br>" + allDevices[band][i].ssid +
+				"<br>Channel: " + allDevices[band][i].channel + ", Bandwidth: " + allDevices[band][i].chanbw +
+				"<br>" + allDevices[band][i].model + "<br>Firmware: " + allDevices[band][i].firmware_version +
+				"<br>Antenna: " + allDevices[band][i].antDesc + " Gain: " + allDevices[band][i].antGain + " Beam: " + allDevices[band][i].antBeam + "&deg;" +
+				"<br>Last Polled: " + localTime.toLocaleString() + "<br>Uptime: " + allDevices[band][i].uptime +
+				"<br>Load Avg: 1min " + allDevices[band][i].loadavg[0] + ", 5min " + allDevices[band][i].loadavg[1] + ", 15min " + allDevices[band][i].loadavg[2] +
+				"<br>" + allDevices[band][i].hopsAway + " hops away from map polling system</div></div>" +
+				"<div class='popupTab' id='popupTab-Services'><div class='popupTabContent'><br>" + createServiceList(allDevices[band][i].services) + "</div></div>" +
+				"<div class='popupTab' id='popupTab-Links'><div class='popupTabContent'><br>" + createLinkList(allDevices[band][i].link_info) + "</div></div>" +
+				"<ul class='popupTabs-link'><li class='popupTab-link'><a href='#popupTab-Main'><span>Main</span></a></li><li class='popupTab-link'>" +
+				"<a href='#popupTab-Services'><span>Services</span></a></li><li class='popupTab-link''><a href='#popupTab-Links'><span>Links</span></a></li></ul>" +
+				"</div>";
+			if(mapInfo['localnode'] == allDevices[band][i].node) {
+				oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
+					icon: pulseNon,
+					title: allDevices[band][i].node
+				}).bindPopup(popup, {maxwidth: 500}).addTo(superNodeStations));
+			}else {
+				oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
+					icon: superNode,
+					title: allDevices[band][i].node
+				}).bindPopup(popup, {maxwidth: 500}).addTo(superNodeStations));
+			}
+			createLinks(allDevices[band][i].node, allDevices[band][i].link_info, allDevices[band][i].lat, allDevices[band][i].lon, superNodeLinks, "supernode");
+		}
 }

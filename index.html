@@ -244,6 +244,10 @@ var pulseNon = L.icon({
     shadowAnchor: [18,18]
 });
 
+var superNode = L.icon({
+	iconUrl: '/images/mapMarkers/super.png',
+	iconSize: [18, 18], iconAnchor: [9, 9], popupAnchor: [0, 9]
+});
 //You Are Here
 var userLocationIcon = L.icon({
         iconUrl: 'images/you_are_here.png',
@@ -296,6 +300,10 @@ var noRFStations = new L.LayerGroup();
 var noRFLinks = new L.LayerGroup();
 var noRF = L.layerGroup([noRFStations,noRFLinks]);
 
+var superNodeStations = new L.LayerGroup();
+var superNodeLinks = new L.LayerGroup();
+var superNodes = new L.layerGroup([superNodeStations, superNodeLinks]);
+
 //var RFLinksTxRate = new L.layerGroup([twoLinksTX, threeLinksTX, fiveLinksTX, nineLinksTX]);
 var RFLinksTxRate = new L.layerGroup([]);
 var RFLinksExpected = new L.layerGroup([]);
@@ -317,7 +325,8 @@ var groupedOverlays = {
 		"<img src='images/mapMarkers/blueRadioCircle-icon.png' height='20'>3.4GHz": band3,
 		"<img src='images/mapMarkers/goldRadioCircle-icon.png' height='20'>5.8GHz": band5,
 		"<img src='images/mapMarkers/magentaRadioCircle-icon.png' height='20'>900MHz": band900,
-		"<img src='images/mapMarkers/greyRadioCircle-icon.png' height='20'>No RF": noRF
+		"<img src='images/mapMarkers/greyRadioCircle-icon.png' height='20'>No RF": noRF,
+		"<img src='images/mapMarkers/super.png' height='20'>SuperNode": superNodes,
 	},
 	"RF Links": {
 		"<img src='images/txRateIcon2.png' height='20' title='Negotiated TX Rate'> TX Rate": RFLinksTxRate,
@@ -370,7 +379,7 @@ var map = L.map('map', {
 	zoom: mapInfo['mapInitialZoom'],
 	minZoom: 0,
 	maxZoom: 18,
-	layers: [defaultMap, band2, band3, band5, band900, RFLinksTxRate]
+	layers: [defaultMap, band2, band3, band5, band900, noRF, superNodes, RFLinksTxRate]
 });
 
 
