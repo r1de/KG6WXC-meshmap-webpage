@@ -9,11 +9,15 @@
 
 	<!-- these 2 are required for the CSV export ("buttons.html5.js") to work -->
 	<script src="js/jszip.js"></script>
-	<script src="js/psfmake.js"></script>
+	<script src="js/pdfmake.js"></script>
 
 	<script src="js/datatables.min.js"></script>
 	<script src="js/dataTables.buttons.js"></script>
 	<script src="js/buttons.html5.js"></script>
+
+        <link rel="stylesheet" href="css/colReorder.dataTables.css">
+        <script src="js/dataTables.colReorder.js"></script>
+
 </head>
 <!-- <body class='wide comments meshdata'> -->
 <body>
@@ -24,6 +28,7 @@
 		<thead>
 			<tr>
 				<th>Name</th>
+				<th>Location</th>
 				<th>Uptime</th>
 				<th>Freq</th>
 <!--				<th>Lat</th> -->
@@ -38,6 +43,7 @@
 		<tfoot>
 			<tr>
 				<th>Name</th>
+				<th>Location</th>
 				<th>Uptime</th>
 				<th>Freq</th>
 <!--				<th>Lat</th> -->
@@ -52,6 +58,7 @@
 	<script>
 	new DataTable('#meshdata', {
 		ajax: '../data/node_report_data.json',
+		colReorder: true,
 		"scrollX": true,
 		"pageLength": 25,
 		"columnDefs": [{
@@ -60,6 +67,7 @@
 		}],
 		"columns": [
 			{data: 'node'},
+			{data: 'location'},
 			{data: 'uptime'},
 			{data: 'freq'},
 //			{data: 'lat'},
