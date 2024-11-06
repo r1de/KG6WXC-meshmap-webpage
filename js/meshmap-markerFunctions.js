@@ -226,7 +226,7 @@ function createDeviceMarkers(allDevices) {
 				"</div>";
 			if(mapInfo['localnode'] == allDevices[band][i].node) {
 				oms.addMarker(L.marker([allDevices[band][i].lat, allDevices[band][i].lon], {
-					icon: pulseNon,
+					icon: pulseSuper,
 					title: allDevices[band][i].node
 				}).bindPopup(popup, {maxwidth: 500}).addTo(superNodeStations));
 			}else {
