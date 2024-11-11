@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>MeshMap Node Report</title>
+	<title>MeshMap Error Report</title>
 	<script src="js/jquery-3.7.1.js"></script>
 	<link rel="stylesheet" href="css/datatables.css">
 	<link rel="stylesheet" href="css/buttons.dataTables.css">
@@ -22,45 +22,33 @@
 <!-- <body class='wide comments meshdata'> -->
 <body>
 	<a name='top' id='top'></a>
-	<div id="test" style="display: inline; background: #999;"><a href="/node_report/node_report.html"><h2 id="foundDevices" style="display: inline;">Nodes</h2></a></div> |
-	<div id="test2" style="display: inline; background: transparent;"><a href="/node_report/error_report.html"><h2 id="errorDevices" style="display: inline;"> Errors</h2></a></div> |
+	<div id="test" style="display: inline; background: transparent;"><a href="/node_report/node_report.html"><h2 id="foundDevices" style="display: inline;">Nodes</h2></a></div> |
+	<div id="test2" style="display: inline; background: #999;"><a href="/node_report/error_report.html"><h2 id="errorDevices" style="display: inline;"> Errors</h2></a></div> |
 	<div id="test3" style="display: inline; background: transparent;"><a href="/node_report/no_location.html"><h2 id="NoLocDevices" style="display: inline;"> No Location</h2></a></div>
 <!--	<h1 class='page_title' style='display: inline;'>MeshMap Nodes</h1> -->
 	<a href='../' style='float: right;'>Back to Map</a>
-	<table id="meshdata" class="display" cellspacing="0" width="100%">
+	<table id="errordata" class="display" cellspacing="0" width="100%">
 		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Location</th>
-				<th>Uptime</th>
-				<th>Freq</th>
-<!--				<th>Lat</th> -->
-<!--				<th>Lon</th> -->
-				<th>SSID</th>
-				<th>Model</th>
-				<th>Version</th>
-				<th>Last Seen</th>
+				<th>Date</th>
+				<th>Error</th>
+				<th>Node</th>
+				<th>Reason</th>
 			</tr>
 		</thead>
 
 		<tfoot>
 			<tr>
-				<th>Name</th>
-				<th>Location</th>
-				<th>Uptime</th>
-				<th>Freq</th>
-<!--				<th>Lat</th> -->
-<!--				<th>Lon</th> -->
-				<th>SSID</th>
-				<th>Model</th>
-				<th>Version</th>
-				<th>Last Seen</th>
+				<th>Date</th>
+				<th>Error</th>
+				<th>Node</th>
+				<th>Reason</th>
 			</tr>
 		</tfoot>
 	</table>
 	<script>
-	new DataTable('#meshdata', {
-		ajax: '../data/node_report_data.json',
+	new DataTable('#errordata', {
+		ajax: '../data/error_report_data.json',
 		colReorder: true,
 		"scrollX": true,
 		"pageLength": 25,
@@ -69,16 +57,10 @@
 			"targets": -1,
 		}],
 		"columns": [
+			{data: 'date'},
+			{data: 'error'},
 			{data: 'node'},
-			{data: 'location'},
-			{data: 'uptime'},
-			{data: 'freq'},
-//			{data: 'lat'},
-//			{data: 'lon'},
-			{data: 'ssid'},
-			{data: 'model'},
-			{data: 'firmware_version'},
-			{data: 'last_seen'}
+			{data: 'reason'},
 		],
 		processing: true,
 		serverside: true,
