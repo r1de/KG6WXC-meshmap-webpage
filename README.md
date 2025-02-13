@@ -4,10 +4,10 @@
 [![MattermostChat](https://img.shields.io/badge/Chat-Mattermost-blueviolet.svg)](https://mattermost.kg6wxc.net/mesh/channels/meshmap)  
   
 Webpage Frontend for Automated mapping of [AREDN](https://arednmesh.org) Networks.  
-
-Copy/Clone this repo to a web accessible directory. ie: `/var/www/html/meshmap`
+  
 ## REQUIREMENTS
 - **webserver** (Apache, Nginx, IIS, etc)
+- **Copy/Clone this repo to a web accessible directory** ie: `/var/www/html/meshmap`
 - **https://github.com/r1de/KG6WXC-meshmap** (to create the nodes and links on the map)
 - **Set `webpageDataDir` to this "data" directory in the `user-settings.ini` file of the Polling script**
   
